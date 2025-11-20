@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>EmployeeList</h1>
+
+<a asp-controller="Employee" asp-action="EmployeeForm" class="btn btn-primary">Add Employee</a>
+
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>@emp.Department</td>
+                <td>
+                    <a asp-controller="Employee" asp-action="EmployeeEdit" asp-route-id="@emp.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@emp.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
